@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="img/lab-icon.svg">
+  <title>Laboratory</title>
+</head>
+<body>
+  <div class="header">
+    <div class="container">
+      <div class="header__backing">
+        <div class="header__logo-title">
+          <a href="index.html" class="header__logo-link">
+            <img src="img/logo.svg" alt="" class="header__logo">
+          </a>
+
+          <h1 class="header__laboratory">
+            Лабораторія
+          </h1>
+        </div>
+      </div>
+
+      <div class="main">
+        <div class="sitebar">
+          <ul class="sitebar__menu">
+            <a href="index.html" class="sitebar__button-link">
+              <li class="sitebar__button">
+                <span class="sitebar__button-name">
+                  Домашня
+                </span>
+              </li>
+            </a>
+
+            <a href="fibrosis4.html" class="sitebar__button-link">
+              <li class="sitebar__button">
+                <span class="sitebar__button-name">
+                  Fib4
+                </span>
+              </li>
+            </a>
+
+            <a href="https://www.hepatitisc.uw.edu/page/clinical-calculators/fib-4" target="_blank" class="sitebar__button-link">
+              <li class="sitebar__button">
+                <span class="sitebar__button-name">
+                  Fib4 (сайт)
+                </span>
+              </li>
+            </a>
+
+            <a href="albumin.html" class="sitebar__button-link">
+              <li class="sitebar__button">
+                <span class="sitebar__button-name">
+                  АС кальцій
+                </span>
+              </li>
+            </a>
+
+            <a href="https://allcalc.ru/node/260" target="_blank" class="sitebar__button-link">
+              <li class="sitebar__button">
+                <span class="sitebar__button-name">
+                  АС кальцій (сайт)
+                </span>
+              </li>
+            </a>
+
+            <a href="http://192.168.1.11/mt/" class="sitebar__button-link">
+              <li class="sitebar__button">
+                <span class="sitebar__button-name">
+                  Внутрішній сайт
+                </span>
+              </li>
+            </a>
+          </ul>
+        </div>
+
+        <div class="content">
+          <div class="box-analysis">
+            <p class="analysis-name">
+              Fibrosis4
+            </p>
+      
+            <form id="analysis-form">
+              <div class="title">
+                <label for="age" class="label">
+                  Вік:
+                </label>
+
+                <input type="number" id="age" class="input" required>
+              </div>
+      
+              <div class="title">
+                <label for="ast" class="label">
+                  AST (аспартатамінотрансфераза):
+                </label>
+
+                <input type="number" id="ast" class="input" required>
+              </div>
+      
+              <div class="title">
+                <label for="alt" class="label">
+                  ALT (аланінамінотрансфераза):
+                </label>
+
+                <input type="number" id="alt" class="input" required>
+              </div>
+      
+              <div class="title">
+                <label for="plt" class="label">
+                  Тромбоцити:
+                </label>
+
+                <input type="number" id="plt" class="input" required>
+              </div>
+      
+              <p id="result" class="result"></p>
+      
+              <div class="block-button">
+                <div class="block-button__wrapper">
+                  <button type="button" class="block-button__button" onclick="calculateFibrosis()">
+                    Розрахувати Fibrosis-4
+                  </button>
+                </div>
+                
+                <div class="block-button__wrapper">
+                  <button type="button" class="block-button__button" onclick="clearFields()">
+                    Очистити поля
+                  </button>
+                </div>
+              </div>
+            </form>
+              
+            
+      
+            <script>
+            function calculateFibrosis() {
+              const age = parseInt(document.getElementById('age').value);
+              const ast = parseInt(document.getElementById('ast').value);
+              const alt = parseInt(document.getElementById('alt').value);
+              const plt = parseInt(document.getElementById('plt').value);
+            
+              // Ваша формула для розрахунку Fibrosis-4
+              const fibrosis4 = (age * ast) / (alt * Math.sqrt(plt));
+            
+              // Виведення результату
+              const resultElement = document.getElementById('result');
+              resultElement.innerHTML = "Результат: "+fibrosis4.toFixed(2);
+            }
+            
+            function clearFields() {
+              document.getElementById('age').value = '';
+              document.getElementById('ast').value = '';
+              document.getElementById('alt').value = '';
+              document.getElementById('plt').value = '';
+            
+              const resultElement = document.getElementById('result');
+              resultElement.innerHTML = '';
+            }
+            </script>
+          </div>
+        </div>
+      </div>
+
+      <div class="partners-title">
+        <p class="partners-text">
+          ЛАБОРАТОРІЇ-ПАРТНЕРИ
+        </p>
+      </div>
+
+      <div class="partners">
+        <div class="partners__wrapper">
+          <a href="https://www.synevo.ua/ua" target="_block" class="partners__wrapper_link">
+            <img src="img/synevo_log.svg" alt="" class="partners__wrapper_logo">
+          </a>
+        </div>
+
+        <div class="partners__wrapper">
+          <a href="https://www.csdlab.ua/" target="_block" class="partners__wrapper_link">
+            <img src="img/csd_logo.svg" alt="" class="partners__wrapper_logo">
+          </a>
+        </div>
+
+        <div class="partners__wrapper">
+          <a href="https://dila.ua/" target="_block" class="partners__wrapper_link">
+            <img src="img/dila_logo.svg" alt="" class="partners__wrapper_logo">
+          </a>
+        </div>
+
+        <div class="partners__wrapper">
+          <a href="https://www.donor.ua/centers/54" target="_block" class="partners__wrapper_link">
+            <img src="img/hocsk_logo.png" alt="" class="partners__wrapper_logo">
+          </a>
+        </div>
+
+        <div class="partners__wrapper">
+          <a href="https://youcontrol.com.ua/catalog/company_details/13962611/" target="_block" class="partners__wrapper_link">
+            <p class=partners__wrapper_name>
+              ПОПАБ ПОР
+            </p>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="footer-block">
+        <p class="footer__copyright">
+          © МЛДЦ "МЕДІОН" 2012 рік
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+/* FOOTER */
+
+.footer {
+    height: 100px;
+    background-color: #154d6d;
+}
+
+.footer-block {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 25px;
+    max-width: 1700px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.footer__copyright {
+    color: white;
+    font-size: 12px;
+}

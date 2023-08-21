@@ -1,0 +1,90 @@
+/* FORM */
+
+.iframe_ca {
+    width: 1000px;
+    height: 700px;
+}
+
+.box-analysis {
+    width: 530px;
+    height: 100%;
+    background-color: #ffffff;
+    padding: 25px;
+    border: 1px solid #167ec4;
+    border-radius: 15px;
+}
+
+.analysis-name {
+    font-size: 25px;
+    text-align: center;
+    color: #167ec4;
+    text-decoration: underline;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+}
+
+.label {
+    font-weight: 700;
+    color: #167ec4;
+    font-size: 20px;
+}
+
+.input {
+    width: 100px;
+    height: 35px;
+    margin-bottom: 25px;
+    padding-left: 15px;
+    border: 1px solid #167ec4;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.result {
+    display: flex;
+    align-items: center;
+    color: #ee7936;
+    padding-left: 15px;
+    margin: 20px 0;
+    height: 55px;
+    width: 50%;
+    font-size: 25px;
+    background-color: #ffffff;
+    border: 1px solid #167ec4;
+    border-radius: 5px;
+    background-color: #eefbff;
+}
+
+.block-button {
+    display: flex;
+    justify-content: space-between;
+}
+
+.block-button__button {
+    padding: 10px;
+    background-color: #167ec4;
+    color: white;
+    border: 3px solid #74c0f3;
+    border-radius: 5px;
+    font-size: 17px;
+}
+
+.block-button__button:hover {
+    cursor: pointer;
+}
+
+.block-button__button:active {
+    background-color: white;
+    color: #167ec4;
+    border: 3px solid #167ec4;
+}
+
+.block-button__button:focus {
+    background-color: white;
+    color: #167ec4;
+}

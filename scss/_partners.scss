@@ -10,10 +10,12 @@
 
 .partners {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     height: 150px;
     transition: 0.3s;
+    margin-bottom: 63px;
 }
 
 .partners__wrapper {

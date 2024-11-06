@@ -101,7 +101,7 @@
               const plt = parseInt(document.getElementById('plt').value);
             
               // Ваша формула для розрахунку Fibrosis-4
-              const fibrosis4 = (age * ast) / (alt * Math.sqrt(plt));
+              const fibrosis4 = (age * ast) / (plt * Math.sqrt(alt));
             
               // Виведення результату
               const resultElement = document.getElementById('result');

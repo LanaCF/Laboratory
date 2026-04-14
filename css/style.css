@@ -64,7 +64,6 @@ a {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   text-transform: uppercase;
   -webkit-transition: 0.3s;
-  -o-transition: 0.3s;
   transition: 0.3s;
 }
 
@@ -119,7 +118,7 @@ a {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 1000px;
+  width: 1215px;
 }
 
 .button-link {
@@ -138,7 +137,6 @@ a {
   margin-bottom: 5px;
   border-radius: 15px;
   -webkit-transition: 0.3s;
-  -o-transition: 0.3s;
   transition: 0.3s;
 }
 
@@ -168,7 +166,6 @@ a {
   height: 100%;
   text-transform: uppercase;
   -webkit-transition: 0.3s;
-  -o-transition: 0.3s;
   transition: 0.3s;
 }
 
@@ -176,8 +173,6 @@ a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
   width: 100%;
 }
 
@@ -262,6 +257,10 @@ a {
   background-color: #eefbff;
 }
 
+.result-big {
+  width: 100%;
+}
+
 .block-button {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -322,7 +321,6 @@ a {
           align-items: center;
   height: 150px;
   -webkit-transition: 0.3s;
-  -o-transition: 0.3s;
   transition: 0.3s;
   margin-bottom: 63px;
 }
@@ -331,7 +329,6 @@ a {
   width: 200px;
   margin-right: 25px;
   -webkit-transition: 0.3s;
-  -o-transition: 0.3s;
   transition: 0.3s;
 }
 
@@ -365,7 +362,6 @@ a {
   border-radius: 5px;
   width: 100%;
   -webkit-transition: 0.3s;
-  -o-transition: 0.3s;
   transition: 0.3s;
 }
 
@@ -376,7 +372,6 @@ a {
           filter: grayscale(100%);
   opacity: 0.7;
   -webkit-transition: 0.3s;
-  -o-transition: 0.3s;
   transition: 0.3s;
 }
 
@@ -396,7 +391,6 @@ a {
           filter: grayscale(100%);
   opacity: 0.7;
   -webkit-transition: 0.3s;
-  -o-transition: 0.3s;
   transition: 0.3s;
 }
 

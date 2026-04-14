@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="./css/style.min.css">
+  <link rel="icon" href="img/lab-icon.svg">
+  <title>Laboratory</title>
+</head>
+<body>
+  <div class="header">
+    <div class="container">
+      <div class="header__backing">
+        <div class="header__logo-title">
+          <a href="index.html" class="header__logo-link">
+            <img src="img/logo.svg" alt="" class="header__logo">
+        
+            <h1 class="header__laboratory">
+              Лабораторія
+            </h1>
+          </a>
+        </div>
+      </div>
+
+      <div class="main">
+        <div class="content">
+          <!-- <a href="index.html">
+            <i class="back-icon fa-solid fa-reply-all"></i>
+          </a> -->
+          
+            <div class="iframe_box">
+                <iframe src="https://www.msdmanuals.com/uk/professional/multimedia/clinical-calculator/glomerular-filtration-rate-estimation-egfr-by-ckd-epi-equation-with-creatinine-without-race-2021" class="iframe_ca">
+                </iframe>
+            </div>
+
+            <div class="box-analysis">
+                <p class="analysis-name">
+                    рШКФ за рівнянням CKD-EPI (креатинін, 2021)
+                </p>
+
+                <form id="analysis-form">
+                    <div class="title">
+                        <label for="sex" class="label">Стать:</label>
+                        <select id="sex" class="input" style="width: 100%;" required>
+                            <option value="male">Чоловіча</option>
+                            <option value="female">Жіноча</option>
+                        </select>
+                    </div>
+
+                    <div class="title">
+                        <label for="age" class="label">Вік:</label>
+                        <input type="number" id="age" class="input" required>
+                    </div>
+
+                    <div class="title">
+                        <label for="creatinine" class="label">Креатинін сироватки (мкмоль/л):</label>
+                        <input type="number" step="0.1" id="creatinine" class="input" required>
+                    </div>
+
+                    <p id="result" class="result result-big"></p>
+
+                    <div class="block-button">
+                        <div class="block-button__wrapper">
+                            <button type="button" class="block-button__button" onclick="calculateEGFR()">
+                                Розрахувати рШКФ
+                            </button>
+                        </div>
+
+                        <div class="block-button__wrapper">
+                            <button type="button" class="block-button__button" onclick="clearFields()">
+                                Очистити поля
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <script>
+                    function calculateEGFR() {
+                        const sex = document.getElementById('sex').value;
+                        const age = parseFloat(document.getElementById('age').value);
+                        const creatinineUmoll = parseFloat(document.getElementById('creatinine').value);
+
+                        if (!age || !creatinineUmoll) {
+                            document.getElementById('result').innerHTML = "Будь ласка, заповніть поля";
+                            return;
+                        }
+
+                        // 1. Конвертація (88.4 — це точний медичний стандарт)
+                        const scr = creatinineUmoll / 88.4;
+
+                        // 2. Параметри строго за стандартом CKD-EPI 2021 (Тільки креатинін)
+                        const isFemale = (sex === 'female');
+                        const kappa = isFemale ? 0.7 : 0.9;
+                        const alpha = isFemale ? -0.241 : -0.302; // Ось ці цифри дають точність
+                        const genderConstant = isFemale ? 1.012 : 1.0;
+
+                        // 3. Розрахунок
+                        // Формула: 142 * min(Scr/k, 1)^alpha * max(Scr/k, 1)^-1.200 * 0.9938^Age * genderConstant
+                        const part1 = Math.pow(Math.min(scr / kappa, 1), alpha);
+                        const part2 = Math.pow(Math.max(scr / kappa, 1), -1.200);
+                        const part3 = Math.pow(0.9938, age);
+
+                        const egfr = 142 * part1 * part2 * part3 * genderConstant;
+
+                        // 4. Виведення результату
+                        const resultElement = document.getElementById('result');
+                        resultElement.innerHTML = "Результат рШКФ: " + Math.round(egfr) + " мл/хв/1,73 м²";
+                    }
+
+                    function clearFields() {
+                        document.getElementById('age').value = '';
+                        document.getElementById('creatinine').value = '';
+                        document.getElementById('sex').selectedIndex = 0;
+                        document.getElementById('result').innerHTML = '';
+                    }
+                </script>
+            </div>
+        </div>
+      </div>
+
+      <div class="partners-title">
+        <p class="partners-text">
+          ЛАБОРАТОРІЇ-ПАРТНЕРИ
+        </p>
+      </div>
+
+      <div class="partners">
+        <div class="partners__wrapper">
+          <a href="https://www.synevo.ua/ua" target="_block" class="partners__wrapper_link">
+            <img src="img/synevo_log.svg" alt="" class="partners__wrapper_logo">
+          </a>
+        </div>
+
+        <div class="partners__wrapper">
+          <a href="https://www.csdlab.ua/" target="_block" class="partners__wrapper_link">
+            <img src="img/csd_logo.svg" alt="" class="partners__wrapper_logo">
+          </a>
+        </div>
+
+        <div class="partners__wrapper">
+          <a href="https://dila.ua/" target="_block" class="partners__wrapper_link">
+            <img src="img/dila_logo.svg" alt="" class="partners__wrapper_logo">
+          </a>
+        </div>
+
+        <div class="partners__wrapper">
+          <a href="https://www.donor.ua/centers/54" target="_block" class="partners__wrapper_link">
+            <img src="img/hocsk_logo.png" alt="" class="partners__wrapper_logo">
+          </a>
+        </div>
+
+        <div class="partners__wrapper">
+          <a href="https://youcontrol.com.ua/catalog/company_details/13962611/" target="_block" class="partners__wrapper_link">
+            <p class=partners__wrapper_name>
+              ПОПАБ ПОР
+            </p>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="footer-block">
+        <p class="footer__copyright">
+          © МЛДЦ "МЕДІОН" 2012 рік
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

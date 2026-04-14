@@ -249,16 +249,12 @@ a {
   padding-left: 15px;
   margin: 20px 0;
   height: 55px;
-  width: 50%;
+  width: 100%;
   font-size: 25px;
   background-color: #ffffff;
   border: 1px solid #167ec4;
   border-radius: 5px;
   background-color: #eefbff;
-}
-
-.result-big {
-  width: 100%;
 }
 
 .block-button {

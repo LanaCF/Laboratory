@@ -44,7 +44,7 @@
                         <form id="analysis-form">
                             <div class="title">
                                 <label for="measuredCalcium" class="label">
-                                    Кальцій:
+                                    Кальцій (ммоль/л):
                                 </label>
 
                                 <input type="number" id="measuredCalcium" class="input">
@@ -52,7 +52,7 @@
                             
                             <div class="title">
                                 <label for="albumin" class="label">
-                                    Альбумін:
+                                    Альбумін (г/л):
                                 </label>
                                 
                                 <input type="number" id="albumin" class="input">
@@ -79,11 +79,16 @@
                             const measuredCalcium = parseFloat(document.getElementById('measuredCalcium').value);
                             const albumin = parseFloat(document.getElementById('albumin').value);
 
+                            if (isNaN(measuredCalcium) || isNaN(albumin)) {
+                                document.getElementById('result').innerHTML = "Будь ласка, заповніть поля";
+                                return;
+                            }
+
                             // Corrected Calcium formula
                             const correctedCalcium = measuredCalcium + 0.02 * (40 - albumin);
 
                             const resultElement = document.getElementById('result');
-                            resultElement.innerHTML = "Результат: "+correctedCalcium.toFixed(2);
+                            resultElement.innerHTML = "Результат: "+correctedCalcium.toFixed(2) + " ммоль/л";
                         }
 
                         function clearFields() {

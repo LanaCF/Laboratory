@@ -52,7 +52,7 @@
       
               <div class="title">
                 <label for="ast" class="label">
-                  AST (аспартатамінотрансфераза):
+                  AST (аспартатамінотрансфераза / ОД/л):
                 </label>
 
                 <input type="number" id="ast" class="input" required>
@@ -60,7 +60,7 @@
       
               <div class="title">
                 <label for="alt" class="label">
-                  ALT (аланінамінотрансфераза):
+                  ALT (аланінамінотрансфераза / ОД/л):
                 </label>
 
                 <input type="number" id="alt" class="input" required>
@@ -68,7 +68,7 @@
       
               <div class="title">
                 <label for="plt" class="label">
-                  Тромбоцити:
+                  Тромбоцити (10<sup>9</sup>/л):
                 </label>
 
                 <input type="number" id="plt" class="input" required>
@@ -96,9 +96,14 @@
             <script>
             function calculateFibrosis() {
               const age = parseInt(document.getElementById('age').value);
-              const ast = parseInt(document.getElementById('ast').value);
-              const alt = parseInt(document.getElementById('alt').value);
+              const ast = parseFloat(document.getElementById('ast').value);
+              const alt = parseFloat(document.getElementById('alt').value);
               const plt = parseInt(document.getElementById('plt').value);
+
+              if (isNaN(age) || isNaN(ast) || isNaN(alt) || isNaN(plt)) {
+                document.getElementById('result').innerHTML = "Будь ласка, заповніть поля";
+                return;
+              }
             
               // Ваша формула для розрахунку Fibrosis-4
               const fibrosis4 = (age * ast) / (plt * Math.sqrt(alt));
